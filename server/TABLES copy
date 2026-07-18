@@ -1,0 +1,25 @@
+CREATE TABLE photos (
+    id SERIAL PRIMARY KEY,
+    event_id UUID,
+    public_id TEXT NOT NULL,
+    image_url TEXT NOT NULL,
+    width INTEGER,
+    height INTEGER,
+    status VARCHAR(30) DEFAULT 'UPLOADED',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE EXTENSION IF NOT EXISTS vector;
+
+CREATE TABLE face_embeddings (
+    id SERIAL PRIMARY KEY,
+    photo_id INTEGER REFERENCES photos(id),
+    embedding VECTOR(512)
+);
+
+CREATE TABLE image_embeddings
+(
+    id SERIAL PRIMARY KEY,
+    photo_id INTEGER REFERENCES photos(id),
+    embedding VECTOR(768)
+);

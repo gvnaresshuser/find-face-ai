@@ -1,0 +1,123 @@
+# ============================
+# Node.js
+# ============================
+
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# ============================
+# React (Vite)
+# ============================
+
+client/node_modules/
+client/dist/
+client/.env
+client/.env.*
+!client/.env.example
+
+# ============================
+# Express Server
+# ============================
+
+server/node_modules/
+server/.env
+server/.env.*
+!server/.env.example
+
+# ============================
+# Python
+# ============================
+
+ai-service/venv/
+ai-service/.venv/
+ai-service/env/
+ai-service/__pycache__/
+ai-service/*.pyc
+ai-service/*.pyo
+ai-service/*.pyd
+ai-service/.python-version
+ai-service/.env
+ai-service/.env.*
+!ai-service/.env.example
+
+# Python cache
+**/__pycache__/
+*.py[cod]
+
+# ============================
+# VS Code
+# ============================
+
+.vscode/
+
+# Uncomment if you don't want to share workspace settings
+# *.code-workspace
+
+# ============================
+# Operating System Files
+# ============================
+
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ============================
+# Logs
+# ============================
+
+logs/
+*.log
+
+# ============================
+# Build Files
+# ============================
+
+build/
+dist/
+coverage/
+
+# ============================
+# Temporary Files
+# ============================
+
+*.tmp
+*.temp
+.cache/
+
+# ============================
+# IDE Files
+# ============================
+
+.idea/
+
+# ============================
+# Environment Variables
+# ============================
+
+.env
+.env.*
+!.env.example
+
+# ============================
+# Large Local Files
+# ============================
+
+TEST-PHOTOS/
+TEST-PHOTOS - 2/
+SCREENS/
+ZIPS/
+
+*.mp4
+*.zip
+
+# ============================
+# Misc
+# ============================
+
+*.bak
+*.swp
+
+*.txt

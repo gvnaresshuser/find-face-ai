@@ -1,0 +1,46 @@
+DROP TABLE IF EXISTS photos CASCADE;
+
+CREATE TABLE photos (
+    id SERIAL PRIMARY KEY,
+    event_id UUID,
+    public_id TEXT NOT NULL,
+    image_url TEXT NOT NULL,
+    width INTEGER,
+    height INTEGER,
+    status VARCHAR(30) DEFAULT 'UPLOADED',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE EXTENSION IF NOT EXISTS vector;
+
+DROP TABLE IF EXISTS face_embeddings;
+
+CREATE TABLE face_embeddings (
+    id SERIAL PRIMARY KEY,
+    photo_id INTEGER NOT NULL REFERENCES photos(id) ON DELETE CASCADE,
+    face_index INTEGER NOT NULL,
+    embedding VECTOR(512) NOT NULL,
+    bbox_x FLOAT,
+    bbox_y FLOAT,
+    bbox_width FLOAT,
+    bbox_height FLOAT,
+    confidence FLOAT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+DROP TABLE IF EXISTS image_embeddings;
+
+CREATE TABLE image_embeddings (
+    id SERIAL PRIMARY KEY,
+    photo_id INTEGER NOT NULL REFERENCES photos(id) ON DELETE CASCADE,
+    embedding VECTOR(768) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE INDEX idx_photos_event_id
+ON photos(event_id);
+
+CREATE INDEX idx_face_embeddings_photo_id
+ON face_embeddings(photo_id);
+
+CREATE INDEX idx_image_embeddings_photo_id
+ON image_embeddings(photo_id);
