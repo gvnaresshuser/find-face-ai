@@ -12,7 +12,8 @@ CORS(app)
 
 print("Loading InsightFace model...")
 
-face_app = FaceAnalysis(name="buffalo_l")
+""" face_app = FaceAnalysis(name="buffalo_l") """
+face_app = FaceAnalysis(name="buffalo_s")
 
 face_app.prepare(ctx_id=0)
 
